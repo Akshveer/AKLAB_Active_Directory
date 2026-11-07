@@ -4,7 +4,7 @@
 I built AKLAB to practice how an IT help desk supports users in a Windows domain. I set up the lab in VirtualBox, worked through 24 simulated support tickets, and documented the troubleshooting steps, resolutions, and verification results.
 
 **To view the project**
-
+https://akshveer.github.io/AKLAB_Active_Directory/
 
 **Lab Environment**
 The lab runs on the aklab.local domain. DC01 is the Windows Server domain controller and DNS server. CLIENT01 is a Windows 11 Pro workstation joined to the domain. I used CLIENT01 to test domain sign-ins, shared folder access, and applied Group Policy settings. The [architecture diagram](Lab%20Architecture%20Diagram.png) shows how the two machines fit together.
