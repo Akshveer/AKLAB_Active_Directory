@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+body { font-family: Segoe UI, Arial, sans-serif; margin: 32px; color: #243247; }
+h1 { color: #153e63; }
+h2 { margin-top: 32px; color: #153e63; }
+table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+th, td { border: 1px solid #ccd5df; padding: 8px; text-align: left;
+         vertical-align: top; overflow-wrap: anywhere; }
+th { background: #153e63; color: white; }
+tr:nth-child(even) { background: #f0f4f8; }
+td { white-space: pre-wrap; }
+p { line-height: 1.5; }
+</style>
+</head><body>
+<h1>AKLAB Server Configuration and Available Change History</h1>
+<p>Generated: 11/04/2026 16:52:24 | Server: DC01</p>
+<p>This report combines current configuration with retained Security audit events.
+Creation and modification timestamps do not reveal every historical change.
+It is not a complete record of all changes since server creation.</p><h2>Domain Configuration</h2>
+<table>
+<colgroup><col/><col/><col/><col/><col/></colgroup>
+<tr><th>DNSRoot</th><th>NetBIOSName</th><th>DomainMode</th><th>DomainSID</th><th>PDCEmulator</th></tr>
+<tr><td>aklab.local</td><td>AKLAB</td><td>Windows2025Domain</td><td>S-1-5-21-3385950946-3095252808-3155279971</td><td>DC01.aklab.local</td></tr>
+</table>
+<h2>Domain Controllers</h2>
+<table>
+<colgroup><col/><col/><col/><col/></colgroup>
+<tr><th>Name</th><th>IPv4Address</th><th>Site</th><th>OperatingSystem</th></tr>
+<tr><td>DC01</td><td>192.168.50.10</td><td>Default-First-Site-Name</td><td>Windows Server 2025 Standard Evaluation</td></tr>
+</table>
+<h2>Organizational Units</h2>
+<table>
+<colgroup><col/><col/><col/><col/></colgroup>
+<tr><th>Name</th><th>DistinguishedName</th><th>whenCreated</th><th>whenChanged</th></tr>
+<tr><td>Domain Controllers</td><td>OU=Domain Controllers,DC=aklab,DC=local</td><td>10/15/2026 1:19:53 PM</td><td>10/15/2026 1:19:53 PM</td></tr>
+<tr><td>Employees</td><td>OU=Employees,DC=aklab,DC=local</td><td>10/17/2026 2:21:36 PM</td><td>10/17/2026 2:21:36 PM</td></tr>
+<tr><td>Finance and Accounting</td><td>OU=Finance and Accounting,DC=aklab,DC=local</td><td>10/21/2026 5:39:01 AM</td><td>10/21/2026 5:39:01 AM</td></tr>
+<tr><td>HelpDesk</td><td>OU=HelpDesk,DC=aklab,DC=local</td><td>10/17/2026 2:20:56 PM</td><td>10/17/2026 2:20:56 PM</td></tr>
+<tr><td>HR</td><td>OU=HR,DC=aklab,DC=local</td><td>10/21/2026 5:45:14 AM</td><td>10/21/2026 5:45:14 AM</td></tr>
+<tr><td>Legal Team</td><td>OU=Legal Team,DC=aklab,DC=local</td><td>10/21/2026 5:39:13 AM</td><td>10/21/2026 5:39:13 AM</td></tr>
+<tr><td>Managers</td><td>OU=Managers,DC=aklab,DC=local</td><td>10/21/2026 4:19:34 AM</td><td>10/21/2026 4:19:34 AM</td></tr>
+<tr><td>Marketing</td><td>OU=Marketing,DC=aklab,DC=local</td><td>10/21/2026 5:39:38 AM</td><td>10/21/2026 5:39:38 AM</td></tr>
+<tr><td>Sales</td><td>OU=Sales,DC=aklab,DC=local</td><td>10/21/2026 5:39:51 AM</td><td>10/21/2026 5:39:51 AM</td></tr>
+<tr><td>Workstations</td><td>OU=Workstations,DC=aklab,DC=local</td><td>10/17/2026 2:21:49 PM</td><td>10/20/2026 9:22:48 PM</td></tr>
+</table>
+<h2>User Accounts</h2>
+<table>
+<colgroup><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<tr><th>Name</th><th>SamAccountName</th><th>Enabled</th><th>Department</th><th>EmployeeID</th><th>whenCreated</th><th>whenChanged</th><th>PasswordLastSet</th></tr>
+<tr><td>Administrator</td><td>Administrator</td><td>True</td><td></td><td></td><td>10/15/2026 1:19:54 PM</td><td>10/31/2026 6:03:22 PM</td><td>10/16/2026 4:57:27 PM</td></tr>
+<tr><td>Alex AM. Morgan</td><td>alex.morgan</td><td>True</td><td></td><td>EMP2</td><td>10/17/2026 2:26:00 PM</td><td>11/2/2026 5:05:39 PM</td><td>10/21/2026 12:41:17 AM</td></tr>
+<tr><td>Alicia Heatherson</td><td>alicia.heatherson</td><td>True</td><td>Employees</td><td></td><td>10/27/2026 3:30:22 AM</td><td>10/27/2026 3:30:22 AM</td><td></td></tr>
+<tr><td>Emily ED. Davis</td><td>emily.davis</td><td>True</td><td></td><td>EMP5</td><td>10/21/2026 5:49:28 AM</td><td>10/24/2026 3:03:54 AM</td><td>10/21/2026 5:49:28 AM</td></tr>
+<tr><td>Ethan EC. Clark</td><td>ethan.clark</td><td>True</td><td></td><td>EMP8</td><td>10/21/2026 6:19:12 AM</td><td>10/24/2026 2:56:00 PM</td><td>10/21/2026 6:19:12 AM</td></tr>
+<tr><td>Guest</td><td>Guest</td><td>False</td><td></td><td></td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td><td></td></tr>
+<tr><td>Jamie JT. Taylor</td><td>jamie.taylor</td><td>True</td><td></td><td>EMP9</td><td>10/17/2026 2:28:52 PM</td><td>11/2/2026 4:03:28 PM</td><td>10/20/2026 9:11:25 PM</td></tr>
+<tr><td>John JR. Reed</td><td>john.reed</td><td>True</td><td>Employees</td><td>EMP4</td><td>10/21/2026 2:43:29 AM</td><td>11/2/2026 6:47:37 PM</td><td>10/21/2026 5:05:21 AM</td></tr>
+<tr><td>John JS. Smith</td><td>john.smith</td><td>True</td><td></td><td>EMP3</td><td>10/17/2026 3:57:48 PM</td><td>11/2/2026 4:08:37 PM</td><td>10/24/2026 4:01:59 AM</td></tr>
+<tr><td>krbtgt</td><td>krbtgt</td><td>False</td><td></td><td></td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:35:48 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Michael MS. Scott</td><td>michael.scott</td><td>True</td><td></td><td>EMP6</td><td>10/21/2026 5:51:58 AM</td><td>10/24/2026 3:03:54 AM</td><td>10/21/2026 5:51:58 AM</td></tr>
+<tr><td>Noah NW. Wilson</td><td>noah.wilson</td><td>False</td><td></td><td></td><td>10/25/2026 4:34:25 AM</td><td>10/25/2026 4:41:53 AM</td><td>10/25/2026 4:40:12 AM</td></tr>
+<tr><td>Olivia OM. Martin</td><td>olivia.martin</td><td>True</td><td>Marketing</td><td>EMP7</td><td>10/21/2026 6:16:51 AM</td><td>10/25/2026 5:55:31 PM</td><td>10/21/2026 6:16:51 AM</td></tr>
+<tr><td>vboxuser</td><td>vboxuser</td><td>True</td><td></td><td>EMP1</td><td>10/15/2026 1:19:54 PM</td><td>10/24/2026 3:03:54 AM</td><td>10/15/2026 12:18:47 AM</td></tr>
+</table>
+<h2>Computer Accounts</h2>
+<table>
+<colgroup><col/><col/><col/><col/><col/></colgroup>
+<tr><th>Name</th><th>Enabled</th><th>OperatingSystem</th><th>whenCreated</th><th>whenChanged</th></tr>
+<tr><td>CLIENT01</td><td>True</td><td>Windows 11 Pro</td><td>10/16/2026 4:58:36 PM</td><td>10/27/2026 2:37:13 AM</td></tr>
+<tr><td>DC01</td><td>True</td><td>Windows Server 2025 Standard Evaluation</td><td>10/15/2026 1:20:38 PM</td><td>10/27/2026 2:36:35 AM</td></tr>
+</table>
+<h2>Security Groups</h2>
+<table>
+<colgroup><col/><col/><col/><col/></colgroup>
+<tr><th>Name</th><th>GroupScope</th><th>whenCreated</th><th>whenChanged</th></tr>
+<tr><td>Access Control Assistance Operators</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>Account Operators</td><td>DomainLocal</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:35:48 PM</td></tr>
+<tr><td>Administrators</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:35:48 PM</td></tr>
+<tr><td>Allowed RODC Password Replication Group</td><td>DomainLocal</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Backup Operators</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/25/2026 1:52:43 AM</td></tr>
+<tr><td>Cert Publishers</td><td>DomainLocal</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Certificate Service DCOM Access</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>Cloneable Domain Controllers</td><td>Global</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Cryptographic Operators</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>Denied RODC Password Replication Group</td><td>DomainLocal</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Distributed COM Users</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>DnsAdmins</td><td>DomainLocal</td><td>10/16/2026 1:21:56 PM</td><td>10/16/2026 1:21:56 PM</td></tr>
+<tr><td>DnsUpdateProxy</td><td>Global</td><td>10/16/2026 1:21:56 PM</td><td>10/16/2026 1:21:56 PM</td></tr>
+<tr><td>Domain Admins</td><td>Global</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:35:48 PM</td></tr>
+<tr><td>Domain Computers</td><td>Global</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Domain Controllers</td><td>Global</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:35:48 PM</td></tr>
+<tr><td>Domain Guests</td><td>Global</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Domain Users</td><td>Global</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Enterprise Admins</td><td>Universal</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:35:48 PM</td></tr>
+<tr><td>Enterprise Key Admins</td><td>Universal</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:35:48 PM</td></tr>
+<tr><td>Enterprise Read-only Domain Controllers</td><td>Universal</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Event Log Readers</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>External Trust Accounts</td><td>Global</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Forest Trust Accounts</td><td>Global</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>GG_Employees</td><td>Global</td><td>10/17/2026 2:30:36 PM</td><td>10/17/2026 2:31:50 PM</td></tr>
+<tr><td>GG_HelpDesk</td><td>Global</td><td>10/17/2026 2:30:03 PM</td><td>10/17/2026 2:32:09 PM</td></tr>
+<tr><td>GG_HR</td><td>Global</td><td>10/21/2026 5:47:19 AM</td><td>10/21/2026 5:47:19 AM</td></tr>
+<tr><td>GG_Managers</td><td>Global</td><td>10/21/2026 4:23:39 AM</td><td>10/21/2026 4:26:43 AM</td></tr>
+<tr><td>GG_Marketing</td><td>Global</td><td>10/21/2026 7:01:16 AM</td><td>10/24/2026 2:49:48 PM</td></tr>
+<tr><td>Group Policy Creator Owners</td><td>Global</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Guests</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Hyper-V Administrators</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>IIS_IUSRS</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>Incoming Forest Trust Builders</td><td>DomainLocal</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Key Admins</td><td>Global</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:35:48 PM</td></tr>
+<tr><td>Network Configuration Operators</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>OpenSSH Users</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>Performance Log Users</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>Performance Monitor Users</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>Pre-Windows 2000 Compatible Access</td><td>DomainLocal</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Print Operators</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:35:48 PM</td></tr>
+<tr><td>Protected Users</td><td>Global</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>RAS and IAS Servers</td><td>DomainLocal</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>RDS Endpoint Servers</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>RDS Management Servers</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>RDS Remote Access Servers</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>Read-only Domain Controllers</td><td>Global</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:35:48 PM</td></tr>
+<tr><td>Remote Desktop Users</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>Remote Management Users</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>Replicator</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:35:48 PM</td></tr>
+<tr><td>Schema Admins</td><td>Universal</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:35:48 PM</td></tr>
+<tr><td>Server Operators</td><td>DomainLocal</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:35:48 PM</td></tr>
+<tr><td>Storage Replica Administrators</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:19:54 PM</td></tr>
+<tr><td>Terminal Server License Servers</td><td>DomainLocal</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Users</td><td>DomainLocal</td><td>10/15/2026 1:19:54 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+<tr><td>Windows Authorization Access Group</td><td>DomainLocal</td><td>10/15/2026 1:20:38 PM</td><td>10/15/2026 1:20:38 PM</td></tr>
+</table>
+<h2>DC01 Shared Folders</h2>
+<table>
+<colgroup><col/><col/><col/></colgroup>
+<tr><th>Name</th><th>Path</th><th>Description</th></tr>
+<tr><td>CompanyShare</td><td>C:\CompanyShare</td><td></td></tr>
+<tr><td>NETLOGON</td><td>C:\WINDOWS\SYSVOL\sysvol\aklab.local\SCRIPTS</td><td>Logon server share </td></tr>
+<tr><td>SYSVOL</td><td>C:\WINDOWS\SYSVOL\sysvol</td><td>Logon server share </td></tr>
+</table>
+<h2>Current Group Policy Objects</h2>
+<table>
+<colgroup><col/><col/><col/><col/></colgroup>
+<tr><th>DisplayName</th><th>GpoStatus</th><th>CreationTime</th><th>ModificationTime</th></tr>
+<tr><td>Workstations-Baseline-Policy</td><td>AllSettingsEnabled</td><td>10/20/2026 9:22:48 PM</td><td>10/20/2026 10:23:36 PM</td></tr>
+<tr><td>Default Domain Policy</td><td>AllSettingsEnabled</td><td>10/15/2026 1:19:53 PM</td><td>10/21/2026 7:53:32 AM</td></tr>
+<tr><td>Default Domain Controllers Policy</td><td>AllSettingsEnabled</td><td>10/15/2026 1:19:53 PM</td><td>10/15/2026 1:19:52 PM</td></tr>
+<tr><td>CLIENT01-Lab-Policy</td><td>AllSettingsEnabled</td><td>10/16/2026 5:16:55 PM</td><td>10/21/2026 3:39:46 AM</td></tr>
+<tr><td>AKLab-IT-Announcements-Policy</td><td>AllSettingsEnabled</td><td>11/2/2026 4:38:36 PM</td><td>11/3/2026 3:24:54 PM</td></tr>
+</table>
+<h2>Security Log Coverage</h2><p>Earliest retained event: 10/16/2026 02:13:42</p>
+<h2>Available Change Audit Events</h2><p>No matching events could be retrieved. Auditing may not have been enabled, records may no longer be retained, or access may have failed. Details: No events were found that match the specified selection criteria.</p>
+<table>
+</table>
+</body></html>

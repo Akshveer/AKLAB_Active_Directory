@@ -1,0 +1,58 @@
+Folder PATH listing for volume Windows
+Volume serial number is 90F5-4C94
+C:.
+|   AKLABTicketKnowledgeBasePortal.html
+|   Lab Architecture Diagram.png
+|   structure.txt
+|   
++---Reports
+|       AKLABDetailedReport.pdf
+|       AKLAB_Architecture.txt
+|       AKLAB_Server_Report.html
+|       AKLAB_Users.html
+|       GPResult.html
+|       Group Policy Results.pdf
+|       
++---Scripts Used
+|   |   Announcement Template.json
+|   |   ArchitectureReportScript.md
+|   |   Show-IT-Announcement.ps1
+|   |   
+|   \---Powershell IT Administration
+|           01-Get-ADUserReport.ps1
+|           02-Find-DisabledAccounts.ps1
+|           03-Get-GroupMembershipReport.ps1
+|           04-Export-OUInventory.ps1
+|           05-New-EmployeeAccount.ps1
+|           
+\---Tickets
+    |   AKLabResolvedTicketsKnowledgeBase.pdf
+    |   Ticket Template.docx
+    |   TicketRegister.xlsx
+    |   
+    \---Resolved Tickets
+            HD-001 PasswordResetRequest.pdf
+            HD-002 CannotAccessEmployeesSharedFolder.pdf
+            HD-003 NewEmployeeEntryRequest.pdf
+            HD-004 UnauthorizedSharedFolderAccess.pdf
+            HD-005 UnableToAccessCompanyShareNetwork.pdf
+            HD-006 ManagerAccess.pdf
+            HD-007 ManagerFolderAccessRequest.pdf
+            HD-008 RequestingTemporaryLockdownOnAccount.pdf
+            HD-009 ConfiguringNewTeamAndUsers.pdf
+            HD-010 IntroducingChangedAccountLockoutPolicy.pdf
+            HD-011 AssigningEmployeeID.pdf
+            HD-012 EnablingDisbaledAccount.pdf
+            HD-013 UnidentifiedLoginAttempts.pdf
+            HD-014 ConsecutiveFailedAuthenticationAttemptsButRemembersThePasswordNow.pdf
+            HD-015 UnabletoaccesstheMarketingfolderunderCompanyShare.pdf
+            HD-016 BackupOperatorUnabletoPerformFileBackup.pdf
+            HD-017 OffboardingEmployeeNoahWilson, .pdf
+            HD-018 DedicatedFolderBackupOperatorAccount.pdf
+            HD-019 SoftwareInstallationForMarketingTeam.pdf
+            HD-020 AssignAUniqueEmployeeIDToJamieTaylor.pdf
+            HD-021 DevelopPowerShellScriptsforActiveDirectoryAdministration .pdf
+            HD-022 ConfigureFileVersionHistoryShadowCopies .pdf
+            HD-023 AutomatedVersionHistory.pdf
+            HD-024 CentralisedAnnouncementSystem.pdf
+            

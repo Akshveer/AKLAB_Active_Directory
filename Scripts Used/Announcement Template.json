@@ -1,0 +1,8 @@
+
+{
+  "AnnouncementID": "ANN-004",
+  "Title": "New IT Policy: File Version History",
+  "Message": "The IT Department has enabled File Version History for shared folders. Employees can now recover previous versions of authorized documents by right-clicking a file, selecting Properties, and opening the Previous Versions tab.",
+  "PublishedBy": "AK Lab IT Support",
+  "Version": "1.0"
+}

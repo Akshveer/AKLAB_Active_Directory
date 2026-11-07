@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Akshveer Kaur’s Active Directory help desk lab, with architecture, reports, PowerShell scripts, and 24 documented support tickets.">
+  <title>AKLAB | Active Directory Help Desk Lab</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #142940;
+      --muted: #4c6175;
+      --line: #d8e3e9;
+      --paper: #fff;
+      --bg: #f5f8fa;
+      --blue: #205681;
+      --teal: #176459;
+      --pale: #eaf5f1;
+      --shadow: 0 12px 30px rgb(20 41 64 / 6%);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 1rem/1.6 system-ui, sans-serif; }
+    a { color: var(--blue); text-underline-offset: 3px; }
+    a:hover { color: var(--teal); }
+    :focus-visible { outline: 3px solid #26766a; outline-offset: 4px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.15; }
+    h1 { margin-bottom: 20px; font-size: clamp(2.55rem, 6.8vw, 5.1rem); letter-spacing: -.065em; max-width: 12ch; }
+    h2 { margin-bottom: 12px; font-size: clamp(1.75rem, 4vw, 2.6rem); letter-spacing: -.045em; }
+    h3 { margin-bottom: 8px; font-size: 1.05rem; }
+    p { color: var(--muted); }
+    .wrap { width: min(1130px, calc(100% - 40px)); margin-inline: auto; }
+    .top { background: var(--paper); border-bottom: 1px solid var(--line); }
+    .top .wrap, footer, .actions, nav { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; }
+    .top .wrap, footer { justify-content: space-between; padding-block: 18px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 800; text-decoration: none; }
+    .mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 11px; background: var(--pale); color: var(--teal); font-size: .83rem; }
+    nav a { padding: 4px; font-size: .88rem; text-decoration: none; font-weight: 650; }
+    .hero { background: linear-gradient(125deg, #f5faff, #ebf6f1); border-bottom: 1px solid var(--line); }
+    .hero-inner { padding-block: clamp(44px, 8vw, 100px); display: grid; grid-template-columns: 1.6fr 1fr; align-items: center; gap: clamp(24px, 7vw, 90px); }
+    .eyebrow { font-size: .75rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); margin-bottom: 13px; }
+    .lead { font-size: 1.08rem; max-width: 58ch; margin-bottom: 24px; }
+    .button { display: inline-flex; align-items: center; padding: 10px 15px; border-radius: 9px; border: 1px solid #c6d6e1; background: var(--paper); font-weight: 700; font-size: .87rem; text-decoration: none; }
+    .button:hover { background: var(--pale); }
+    .primary { background: var(--blue); color: white; border-color: var(--blue); }
+    .primary:hover { background: #173f60; color: white; }
+    .snapshot, .card, .diagram, .resources, .ticket-list { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); }
+    .snapshot { padding: 24px; }
+    .snapshot dl { margin: 0; }
+    .snapshot dl div { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .snapshot dl div:last-child { padding-bottom: 0; border: 0; }
+    dt { font-size: .78rem; color: var(--muted); }
+    dd { margin: 2px 0 0; font-weight: 730; }
+    section { scroll-margin-top: 20px; }
+    main > .wrap > section { padding-top: 55px; }
+    .intro { max-width: 70ch; }
+    .architecture { display: grid; grid-template-columns: 1.7fr 1fr; gap: 20px; align-items: start; }
+    figure { margin: 0; }
+    .diagram { overflow: hidden; }
+    .diagram img { display: block; width: 100%; max-height: 560px; object-fit: contain; background: white; }
+    figcaption { padding: 14px 18px; border-top: 1px solid var(--line); }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .card, .resources { padding: 21px; }
+    .card { display: flex; flex-direction: column; align-items: flex-start; }
+    .card p { margin-bottom: 15px; }
+    .card .text-link { margin-top: auto; }
+    .badge { display: inline-block; margin-bottom: 12px; padding: 2px 8px; border-radius: 6px; background: var(--pale); color: var(--teal); font-size: .72rem; font-weight: 800; }
+    .text-link { font-size: .87rem; font-weight: 720; }
+    .resources { margin-top: 18px; }
+    .file-list, .ticket-list { list-style: none; margin: 0; padding: 0; }
+    .file-link { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding-block: 10px; font-size: .9rem; }
+    .file-list li + li { border-top: 1px solid var(--line); }
+    .file-link small { color: var(--teal); font-weight: 750; }
+    .filters { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin: 20px 0 10px; }
+    .filters[hidden], [hidden] { display: none; }
+    label { display: grid; gap: 5px; font-size: .85rem; font-weight: 700; }
+    input, select { font: inherit; border: 1px solid #9db4c5; border-radius: 8px; padding: 9px 12px; background: white; color: var(--ink); }
+    input { width: min(340px, 75vw); }
+    .ticket-list { overflow: hidden; }
+    .ticket { display: grid; grid-template-columns: 72px 1fr auto; gap: 14px; align-items: center; padding: 14px 18px; }
+    .ticket:not(:last-child) { border-bottom: 1px solid var(--line); }
+    .ticket:hover { background: #f5faf9; }
+    .ticket h3 { margin: 0 0 4px; font-size: .96rem; }
+    .ticket-id { font: 750 .84rem ui-monospace, monospace; color: var(--teal); }
+    .ticket-area, .count { font-size: .81rem; color: var(--muted); }
+    footer { border-top: 1px solid var(--line); margin-top: 56px; font-size: .86rem; color: var(--muted); }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .skip { position: absolute; top: 8px; left: 8px; padding: 10px; background: white; transform: translateY(-150%); }
+    .skip:focus { transform: none; }
+    @media (max-width: 780px) {
+      .hero-inner, .architecture { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 540px) {
+      .wrap { width: calc(100% - 28px); }
+      .grid, .split { grid-template-columns: 1fr; }
+      .ticket { grid-template-columns: 58px 1fr; gap: 8px; padding: 12px; }
+      .ticket-link { grid-column: 2; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="#main"><span class="mark" aria-hidden="true">AK</span> AKLAB Portfolio</a>
+      <nav aria-label="Project navigation">
+        <a href="#architecture">Architecture</a><a href="#reports">Reports</a><a href="#tickets">Tickets</a><a href="#scripts">Scripts</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="title">
+      <div class="wrap hero-inner">
+        <div>
+          <p class="eyebrow">IT support portfolio · Akshveer Kaur</p>
+          <h1 id="title">Active Directory Help Desk Lab</h1>
+          <p class="lead">I built a Windows domain in VirtualBox to practice the work of an IT support technician. I used it to manage user accounts, troubleshoot shared folder access, verify Group Policy, and document how I resolved support requests.</p>
+          <div class="actions"><a class="button primary" href="./Reports/AKLABDetailedReport.pdf">Read the full report ↗</a><a class="button" href="./AKLABTicketKnowledgeBasePortal.html">Open the knowledge base ↗</a></div>
+        </div>
+        <aside class="snapshot" aria-label="Lab at a glance">
+          <p class="eyebrow">Lab at a glance</p>
+          <dl>
+            <div><dt>Domain</dt><dd>aklab.local</dd></div>
+            <div><dt>Domain controller</dt><dd>DC01 · Windows Server</dd></div>
+            <div><dt>Domain client</dt><dd>CLIENT01 · Windows 11 Pro</dd></div>
+            <div><dt>Support documentation</dt><dd>24 resolved lab tickets</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <section id="architecture" aria-labelledby="architecture-title">
+        <p class="eyebrow">01 · Lab environment</p>
+        <h2 id="architecture-title">Architecture</h2>
+        <p class="intro">DC01 provides Active Directory and DNS for the lab domain. CLIENT01 is the workstation I used to test domain sign-ins, shared folders, and policy behavior.</p>
+        <div class="architecture">
+          <figure class="diagram">
+            <img src="./Lab%20Architecture%20Diagram.png" alt="Architecture diagram showing DC01 and CLIENT01 in the AKLAB Active Directory lab" loading="lazy">
+            <figcaption><a class="text-link" href="./Lab%20Architecture%20Diagram.png">Open full-size diagram ↗</a></figcaption>
+          </figure>
+          <article class="card">
+            <h3>What I verified from CLIENT01</h3>
+            <ul>
+              <li>Domain connectivity and account sign-in</li>
+              <li>Shared folder access based on permissions</li>
+              <li>Group Policy results on the workstation</li>
+            </ul>
+            <a class="text-link" href="#reports">See the supporting reports ↓</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="reports" aria-labelledby="reports-title">
+        <p class="eyebrow">02 · Project evidence</p>
+        <h2 id="reports-title">Reports and verification</h2>
+        <p class="intro">Start with the detailed report, then open the individual exports for the server, directory users, and Group Policy.</p>
+        <div class="grid"><article class="card"><span class="badge">PDF</span><h3>Detailed lab report</h3><p>Project scope, implementation, and supporting documentation.</p><a class="text-link" href="./Reports/AKLABDetailedReport.pdf">Open PDF ↗</a></article>
+<article class="card"><span class="badge">HTML</span><h3>Server configuration report</h3><p>Open the exported server report.</p><a class="text-link" href="./Reports/AKLAB_Server_Report.html">Open HTML ↗</a></article>
+<article class="card"><span class="badge">HTML</span><h3>Active Directory user inventory</h3><p>Review the exported directory user report.</p><a class="text-link" href="./Reports/AKLAB_Users.html">Open HTML ↗</a></article>
+<article class="card"><span class="badge">HTML</span><h3>Group Policy result report</h3><p>Open the HTML export of policy results.</p><a class="text-link" href="./Reports/GPResult.html">Open HTML ↗</a></article>
+<article class="card"><span class="badge">PDF</span><h3>Group Policy results</h3><p>Read the PDF evidence for Group Policy.</p><a class="text-link" href="./Reports/Group%20Policy%20Results.pdf">Open PDF ↗</a></article>
+<article class="card"><span class="badge">TXT</span><h3>Architecture notes</h3><p>Read the text export of the lab architecture.</p><a class="text-link" href="./Reports/AKLAB_Architecture.txt">Open TXT ↗</a></article></div>
+      </section>
+
+      <section id="tickets" aria-labelledby="tickets-title">
+        <p class="eyebrow">03 · Support scenarios</p>
+        <h2 id="tickets-title">Resolved ticket library</h2>
+        <p class="intro">Browse simulated help desk requests covering account administration, file access, backups, and other IT operations. Each ticket links directly to its PDF.</p>
+        <div class="resources">
+          <h3>Support documentation</h3>
+          <div class="actions"><a class="button" href="./Tickets/AKLabResolvedTicketsKnowledgeBase.pdf">Open knowledge base PDF ↗</a><a class="button" href="./Tickets/TicketRegister.xlsx" download>Download ticket register · XLSX</a><a class="button" href="./Tickets/Ticket%20Template.docx" download>Download ticket template · DOCX</a></div>
+        </div>
+        <div id="filters" class="filters" hidden>
+          <label>Find a ticket <input id="ticket-search" type="search" placeholder="Search by ID or title"></label>
+          <label>Category <select id="ticket-category"><option value="">All categories</option><option>Identity</option><option>File access</option><option>Operations</option></select></label>
+        </div>
+        <p id="ticket-count" class="count" role="status" hidden></p>
+        <ul class="ticket-list" aria-label="Resolved support tickets"><li class="ticket" data-area="Identity"><span class="ticket-id">HD-001</span><div><h3>Password reset request</h3><span class="ticket-area">Identity</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-001%20PasswordResetRequest.pdf"><span class="sr-only">HD-001 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="File access"><span class="ticket-id">HD-002</span><div><h3>Cannot access Employees shared folder</h3><span class="ticket-area">File access</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-002%20CannotAccessEmployeesSharedFolder.pdf"><span class="sr-only">HD-002 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Identity"><span class="ticket-id">HD-003</span><div><h3>New employee account request</h3><span class="ticket-area">Identity</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-003%20NewEmployeeEntryRequest.pdf"><span class="sr-only">HD-003 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="File access"><span class="ticket-id">HD-004</span><div><h3>Unauthorized shared folder access</h3><span class="ticket-area">File access</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-004%20UnauthorizedSharedFolderAccess.pdf"><span class="sr-only">HD-004 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="File access"><span class="ticket-id">HD-005</span><div><h3>Unable to access CompanyShare</h3><span class="ticket-area">File access</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-005%20UnableToAccessCompanyShareNetwork.pdf"><span class="sr-only">HD-005 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Identity"><span class="ticket-id">HD-006</span><div><h3>Manager access</h3><span class="ticket-area">Identity</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-006%20ManagerAccess.pdf"><span class="sr-only">HD-006 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="File access"><span class="ticket-id">HD-007</span><div><h3>Manager folder access request</h3><span class="ticket-area">File access</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-007%20ManagerFolderAccessRequest.pdf"><span class="sr-only">HD-007 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Identity"><span class="ticket-id">HD-008</span><div><h3>Temporary account lockdown</h3><span class="ticket-area">Identity</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-008%20RequestingTemporaryLockdownOnAccount.pdf"><span class="sr-only">HD-008 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Identity"><span class="ticket-id">HD-009</span><div><h3>Configure a new team and users</h3><span class="ticket-area">Identity</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-009%20ConfiguringNewTeamAndUsers.pdf"><span class="sr-only">HD-009 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Identity"><span class="ticket-id">HD-010</span><div><h3>Update the account lockout policy</h3><span class="ticket-area">Identity</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-010%20IntroducingChangedAccountLockoutPolicy.pdf"><span class="sr-only">HD-010 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Identity"><span class="ticket-id">HD-011</span><div><h3>Assign employee IDs</h3><span class="ticket-area">Identity</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-011%20AssigningEmployeeID.pdf"><span class="sr-only">HD-011 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Identity"><span class="ticket-id">HD-012</span><div><h3>Enable a disabled account</h3><span class="ticket-area">Identity</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-012%20EnablingDisbaledAccount.pdf"><span class="sr-only">HD-012 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Identity"><span class="ticket-id">HD-013</span><div><h3>Unidentified login attempts</h3><span class="ticket-area">Identity</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-013%20UnidentifiedLoginAttempts.pdf"><span class="sr-only">HD-013 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Identity"><span class="ticket-id">HD-014</span><div><h3>Restore access after failed sign-in attempts</h3><span class="ticket-area">Identity</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-014%20ConsecutiveFailedAuthenticationAttemptsButRemembersThePasswordNow.pdf"><span class="sr-only">HD-014 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="File access"><span class="ticket-id">HD-015</span><div><h3>Unable to access the Marketing folder</h3><span class="ticket-area">File access</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-015%20UnabletoaccesstheMarketingfolderunderCompanyShare.pdf"><span class="sr-only">HD-015 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Operations"><span class="ticket-id">HD-016</span><div><h3>Backup Operator unable to perform file backup</h3><span class="ticket-area">Operations</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-016%20BackupOperatorUnabletoPerformFileBackup.pdf"><span class="sr-only">HD-016 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Identity"><span class="ticket-id">HD-017</span><div><h3>Offboard Noah Wilson</h3><span class="ticket-area">Identity</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-017%20OffboardingEmployeeNoahWilson%2C%20.pdf"><span class="sr-only">HD-017 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="File access"><span class="ticket-id">HD-018</span><div><h3>Dedicated folder for the Backup Operator</h3><span class="ticket-area">File access</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-018%20DedicatedFolderBackupOperatorAccount.pdf"><span class="sr-only">HD-018 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Operations"><span class="ticket-id">HD-019</span><div><h3>Software installation for Marketing</h3><span class="ticket-area">Operations</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-019%20SoftwareInstallationForMarketingTeam.pdf"><span class="sr-only">HD-019 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Identity"><span class="ticket-id">HD-020</span><div><h3>Assign a unique employee ID to Jamie Taylor</h3><span class="ticket-area">Identity</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-020%20AssignAUniqueEmployeeIDToJamieTaylor.pdf"><span class="sr-only">HD-020 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Operations"><span class="ticket-id">HD-021</span><div><h3>Develop PowerShell scripts for AD administration</h3><span class="ticket-area">Operations</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-021%20DevelopPowerShellScriptsforActiveDirectoryAdministration%20.pdf"><span class="sr-only">HD-021 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Operations"><span class="ticket-id">HD-022</span><div><h3>Configure file version history with shadow copies</h3><span class="ticket-area">Operations</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-022%20ConfigureFileVersionHistoryShadowCopies%20.pdf"><span class="sr-only">HD-022 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Operations"><span class="ticket-id">HD-023</span><div><h3>Automated version history</h3><span class="ticket-area">Operations</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-023%20AutomatedVersionHistory.pdf"><span class="sr-only">HD-023 </span>Open PDF ↗</a></li>
+<li class="ticket" data-area="Operations"><span class="ticket-id">HD-024</span><div><h3>Centralized announcement system</h3><span class="ticket-area">Operations</span></div><a class="text-link ticket-link" href="./Tickets/Resolved%20Tickets/HD-024%20CentralisedAnnouncementSystem.pdf"><span class="sr-only">HD-024 </span>Open PDF ↗</a></li></ul>
+      </section>
+
+      <section id="scripts" aria-labelledby="scripts-title">
+        <p class="eyebrow">04 · Automation</p>
+        <h2 id="scripts-title">Scripts and templates</h2>
+        <p class="intro">PowerShell scripts for common directory tasks, alongside supporting files for the architecture report and IT announcement system.</p>
+        <div class="split">
+          <article class="card"><h3>PowerShell IT administration</h3><ul class="file-list" style="width:100%"><li><a class="file-link" href="./Scripts%20Used/Powershell%20IT%20Administration/01-Get-ADUserReport.ps1"><span>AD user report</span><small>PS1</small></a></li>
+<li><a class="file-link" href="./Scripts%20Used/Powershell%20IT%20Administration/02-Find-DisabledAccounts.ps1"><span>Find disabled accounts</span><small>PS1</small></a></li>
+<li><a class="file-link" href="./Scripts%20Used/Powershell%20IT%20Administration/03-Get-GroupMembershipReport.ps1"><span>Group membership report</span><small>PS1</small></a></li>
+<li><a class="file-link" href="./Scripts%20Used/Powershell%20IT%20Administration/04-Export-OUInventory.ps1"><span>Export OU inventory</span><small>PS1</small></a></li>
+<li><a class="file-link" href="./Scripts%20Used/Powershell%20IT%20Administration/05-New-EmployeeAccount.ps1"><span>Create a new employee account</span><small>PS1</small></a></li></ul></article>
+          <article class="card"><h3>Reporting and announcements</h3><ul class="file-list" style="width:100%"><li><a class="file-link" href="./Scripts%20Used/Show-IT-Announcement.ps1"><span>Announcement display script</span><small>PS1</small></a></li>
+<li><a class="file-link" href="./Scripts%20Used/Announcement%20Template.json"><span>Announcement template</span><small>JSON</small></a></li>
+<li><a class="file-link" href="./Scripts%20Used/ArchitectureReportScript.md"><span>Architecture report script notes</span><small>MD</small></a></li></ul></article>
+        </div>
+      </section>
+
+      <footer><span>AKLAB · Active Directory Help Desk Lab · Akshveer Kaur</span><a class="text-link" href="./structure.txt">View folder structure</a></footer>
+    </div>
+  </main>
+  <script>
+    const filters = document.querySelector('#filters');
+    const search = document.querySelector('#ticket-search');
+    const category = document.querySelector('#ticket-category');
+    const count = document.querySelector('#ticket-count');
+    const tickets = document.querySelectorAll('.ticket');
+
+    function updateTickets() {
+      const query = search.value.trim().toLowerCase();
+      let visible = 0;
+
+      for (const ticket of tickets) {
+        const matchesQuery = ticket.textContent.toLowerCase().includes(query);
+        const matchesCategory = !category.value || ticket.dataset.area === category.value;
+        ticket.hidden = !(matchesQuery && matchesCategory);
+
+        if (!ticket.hidden) visible += 1;
+      }
+
+      count.textContent = visible
+        ? `Showing ${visible} of ${tickets.length} tickets`
+        : 'No matching tickets. Try a different search or category.';
+    }
+
+    search.addEventListener('input', updateTickets);
+    category.addEventListener('change', updateTickets);
+    updateTickets();
+    filters.hidden = false;
+    count.hidden = false;
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>AKLab IT Support Knowledge Base</title>
+<style>
+:root{--navy:#173451;--teal:#167d8d;--ink:#263746;--muted:#647587;--line:#dce4eb;--bg:#f4f7fa}
+*{box-sizing:border-box}body{margin:0;font:15px/1.6 Aptos,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:var(--navy);color:white;padding:36px max(22px,calc((100vw - 1100px)/2)) 30px}
+header .eyebrow{color:#b8d8ee;text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:700}
+header h1{font-size:clamp(28px,4vw,42px);line-height:1.12;margin:10px 0}
+header p{color:#d8e5ef;margin:0;max-width:700px}
+main{max-width:1100px;margin:26px auto;padding:0 20px}
+.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:24px}
+input{flex:1;min-width:240px;padding:13px 15px;border:1px solid var(--line);border-radius:9px;font:inherit;background:white}
+.count{color:var(--muted);font-size:13px}
+.category{margin:28px 0}.category h2{font-size:20px;color:var(--navy);border-bottom:1px solid var(--line);padding-bottom:9px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:14px}
+.card{background:white;border:1px solid var(--line);border-radius:12px;padding:17px;box-shadow:0 2px 8px #1734510b}
+.meta{display:flex;gap:8px;justify-content:space-between;color:var(--teal);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.card h3{font-size:17px;line-height:1.3;color:var(--navy);margin:12px 0 6px}.card p{color:var(--muted);font-size:13px;min-height:44px}
+button{border:0;background:var(--teal);color:white;border-radius:7px;padding:9px 13px;font-weight:700;cursor:pointer}button:hover{background:#105f6c}
+.article{display:none;background:white;border:1px solid var(--line);border-radius:14px;padding:clamp(20px,4vw,42px);max-width:850px;margin:0 auto}
+.article.active{display:block}.article h1{color:var(--navy);font-size:32px;line-height:1.2;margin:12px 0}.article h2{font-size:18px;color:var(--teal);margin:25px 0 6px}
+.article p{margin-top:5px}.lead{font-size:17px;color:var(--muted)}.back{background:var(--navy);margin-bottom:22px}
+.note{background:#f1f6f8;border-left:4px solid var(--teal);padding:12px;color:#536574;font-size:13px;margin-top:24px}
+#home.hidden{display:none}footer{max-width:1100px;margin:40px auto 20px;padding:0 20px;color:var(--muted);font-size:12px}
+.empty{display:none;color:var(--muted);padding:18px}
+@media print{body{background:white}header{padding:20px}.toolbar,button{display:none}.article{display:block;page-break-after:always}}
+</style></head><body>
+<header><div class="eyebrow">AKLAB.LOCAL · IT OPERATIONS</div><h1>IT Support Ticket Knowledge Base</h1><p>Browse practical Active Directory and help desk guidance by issue. Search by ticket ID, keyword, or category, then open an article.</p></header>
+<main><div id="home"><div class="toolbar"><input id="search" oninput="filterCards()" placeholder="Search articles, e.g. DNS, folder access, password reset…" type="search"/><span class="count" id="count">24 articles</span></div>
+<section class="category"><h2>🔐 Account &amp; Identity Management</h2><div class="grid"><article class="card" data-search="hd-001 password reset request account &amp; identity management password reset">
+<div class="meta"><span>HD-001</span><span>Account &amp; Identity Management</span></div>
+<h3>Password Reset Request</h3><p>Password reset</p>
+<button onclick="openArticle('HD-001')">Open article →</button></article><article class="card" data-search="hd-008 requesting temporary account lockdown account &amp; identity management temporary account restriction">
+<div class="meta"><span>HD-008</span><span>Account &amp; Identity Management</span></div>
+<h3>Requesting Temporary Account Lockdown</h3><p>Temporary account restriction</p>
+<button onclick="openArticle('HD-008')">Open article →</button></article><article class="card" data-search="hd-012 enabling disabled account account &amp; identity management re-enable user account">
+<div class="meta"><span>HD-012</span><span>Account &amp; Identity Management</span></div>
+<h3>Enabling Disabled Account</h3><p>Re-enable user account</p>
+<button onclick="openArticle('HD-012')">Open article →</button></article><article class="card" data-search="hd-014 consecutive failed authentication attempts account &amp; identity management repeated failed sign-ins">
+<div class="meta"><span>HD-014</span><span>Account &amp; Identity Management</span></div>
+<h3>Consecutive Failed Authentication Attempts</h3><p>Repeated failed sign-ins</p>
+<button onclick="openArticle('HD-014')">Open article →</button></article></div></section><section class="category"><h2>📁 File Shares &amp; Permissions</h2><div class="grid"><article class="card" data-search="hd-002 cannot access employees shared folder file shares &amp; permissions shared-folder access">
+<div class="meta"><span>HD-002</span><span>File Shares &amp; Permissions</span></div>
+<h3>Cannot Access Employees Shared Folder</h3><p>Shared-folder access</p>
+<button onclick="openArticle('HD-002')">Open article →</button></article><article class="card" data-search="hd-005 unable to access companyshare network location file shares &amp; permissions network share connectivity">
+<div class="meta"><span>HD-005</span><span>File Shares &amp; Permissions</span></div>
+<h3>Unable to Access CompanyShare Network Location</h3><p>Network share connectivity</p>
+<button onclick="openArticle('HD-005')">Open article →</button></article><article class="card" data-search="hd-015 unable to access the marketing folder file shares &amp; permissions department folder access">
+<div class="meta"><span>HD-015</span><span>File Shares &amp; Permissions</span></div>
+<h3>Unable to Access the Marketing Folder</h3><p>Department folder access</p>
+<button onclick="openArticle('HD-015')">Open article →</button></article></div></section><section class="category"><h2>👥 Onboarding &amp; User Provisioning</h2><div class="grid"><article class="card" data-search="hd-003 new employee entry request onboarding &amp; user provisioning new employee onboarding">
+<div class="meta"><span>HD-003</span><span>Onboarding &amp; User Provisioning</span></div>
+<h3>New Employee Entry Request</h3><p>New employee onboarding</p>
+<button onclick="openArticle('HD-003')">Open article →</button></article><article class="card" data-search="hd-009 configuring new team and users onboarding &amp; user provisioning team and user setup">
+<div class="meta"><span>HD-009</span><span>Onboarding &amp; User Provisioning</span></div>
+<h3>Configuring New Team and Users</h3><p>Team and user setup</p>
+<button onclick="openArticle('HD-009')">Open article →</button></article><article class="card" data-search="hd-017 offboarding employee noah wilson onboarding &amp; user provisioning employee offboarding">
+<div class="meta"><span>HD-017</span><span>Onboarding &amp; User Provisioning</span></div>
+<h3>Offboarding Employee Noah Wilson</h3><p>Employee offboarding</p>
+<button onclick="openArticle('HD-017')">Open article →</button></article></div></section><section class="category"><h2>📘 Security &amp; Access Control</h2><div class="grid"><article class="card" data-search="hd-004 unauthorized shared folder access security &amp; access control unauthorized access">
+<div class="meta"><span>HD-004</span><span>Security &amp; Access Control</span></div>
+<h3>Unauthorized Shared Folder Access</h3><p>Unauthorized access</p>
+<button onclick="openArticle('HD-004')">Open article →</button></article></div></section><section class="category"><h2>🛡️ Delegation &amp; Manager Access</h2><div class="grid"><article class="card" data-search="hd-006 manager access delegation &amp; manager access manager permissions">
+<div class="meta"><span>HD-006</span><span>Delegation &amp; Manager Access</span></div>
+<h3>Manager Access</h3><p>Manager permissions</p>
+<button onclick="openArticle('HD-006')">Open article →</button></article><article class="card" data-search="hd-007 manager folder access request delegation &amp; manager access management folder access">
+<div class="meta"><span>HD-007</span><span>Delegation &amp; Manager Access</span></div>
+<h3>Manager Folder Access Request</h3><p>Management folder access</p>
+<button onclick="openArticle('HD-007')">Open article →</button></article></div></section><section class="category"><h2>⚙️ Group Policy &amp; Security</h2><div class="grid"><article class="card" data-search="hd-010 introducing changed account lockout policy group policy &amp; security account lockout policy">
+<div class="meta"><span>HD-010</span><span>Group Policy &amp; Security</span></div>
+<h3>Introducing Changed Account Lockout Policy</h3><p>Account lockout policy</p>
+<button onclick="openArticle('HD-010')">Open article →</button></article><article class="card" data-search="hd-024 centralized it announcement system group policy &amp; security json-driven logon announcements"><div class="meta"><span>HD-024</span><span>Group Policy &amp; Security</span></div><h3>Centralized IT Announcement System</h3><p>JSON-driven logon announcements</p><button onclick="openArticle('HD-024')">Open article →</button></article></div></section><section class="category"><h2>⌨️ PowerShell &amp; Directory Administration</h2><div class="grid"><article class="card" data-search="hd-011 assigning employee id powershell &amp; directory administration employee id assignment">
+<div class="meta"><span>HD-011</span><span>PowerShell &amp; Directory Administration</span></div>
+<h3>Assigning Employee ID</h3><p>Employee ID assignment</p>
+<button onclick="openArticle('HD-011')">Open article →</button></article><article class="card" data-search="hd-020 assign a unique employee id to jamie taylor powershell &amp; directory administration unique employee id allocation">
+<div class="meta"><span>HD-020</span><span>PowerShell &amp; Directory Administration</span></div>
+<h3>Assign a Unique Employee ID to Jamie Taylor</h3><p>Unique employee ID allocation</p>
+<button onclick="openArticle('HD-020')">Open article →</button></article><article class="card" data-search="hd-021 develop powershell scripts for active directory powershell &amp; directory administration directory automation">
+<div class="meta"><span>HD-021</span><span>PowerShell &amp; Directory Administration</span></div>
+<h3>Develop PowerShell Scripts for Active Directory</h3><p>Directory automation</p>
+<button onclick="openArticle('HD-021')">Open article →</button></article></div></section><section class="category"><h2>🔎 Security &amp; Authentication</h2><div class="grid"><article class="card" data-search="hd-013 unidentified login attempts security &amp; authentication unrecognized authentication activity">
+<div class="meta"><span>HD-013</span><span>Security &amp; Authentication</span></div>
+<h3>Unidentified Login Attempts</h3><p>Unrecognized authentication activity</p>
+<button onclick="openArticle('HD-013')">Open article →</button></article></div></section><section class="category"><h2>💾 Backup &amp; Recovery</h2><div class="grid"><article class="card" data-search="hd-016 backup operator unable to perform file backup backup &amp; recovery backup operation failure">
+<div class="meta"><span>HD-016</span><span>Backup &amp; Recovery</span></div>
+<h3>Backup Operator Unable to Perform File Backup</h3><p>Backup operation failure</p>
+<button onclick="openArticle('HD-016')">Open article →</button></article><article class="card" data-search="hd-018 dedicated folder for backup operator access backup &amp; recovery backup operator working folder">
+<div class="meta"><span>HD-018</span><span>Backup &amp; Recovery</span></div>
+<h3>Dedicated Folder for Backup Operator Access</h3><p>Backup operator working folder</p>
+<button onclick="openArticle('HD-018')">Open article →</button></article><article class="card" data-search="hd-022 configure file version history with shadow copies backup &amp; recovery volume-level previous versions and recovery"><div class="meta"><span>HD-022</span><span>Backup &amp; Recovery</span></div><h3>Configure File Version History with Shadow Copies</h3><p>Volume-level previous versions and recovery</p><button onclick="openArticle('HD-022')">Open article →</button></article><article class="card" data-search="hd-023 automate file version history snapshots backup &amp; recovery scheduled shadow copy snapshots"><div class="meta"><span>HD-023</span><span>Backup &amp; Recovery</span></div><h3>Automate File Version History Snapshots</h3><p>Scheduled Shadow Copy snapshots</p><button onclick="openArticle('HD-023')">Open article →</button></article></div></section><section class="category"><h2>💻 Software &amp; Workstation Support</h2><div class="grid"><article class="card" data-search="hd-019 software installation for marketing team software &amp; workstation support application deployment">
+<div class="meta"><span>HD-019</span><span>Software &amp; Workstation Support</span></div>
+<h3>Software Installation for Marketing Team</h3><p>Application deployment</p>
+<button onclick="openArticle('HD-019')">Open article →</button></article></div></section><p class="empty" id="empty">No matching articles. Try another keyword.</p></div><article class="article" id="article-HD-001">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-001</span><span>Account &amp; Identity Management</span></div>
+<h1>Password Reset Request</h1>
+<p class="lead">Password reset</p>
+<h2>Purpose</h2><p>The ticket register identifies a password-reset request. Use this guide when a domain user cannot authenticate because their password is forgotten or needs to be changed.</p>
+<h2>Recommended procedure</h2><p>Confirm the requester’s identity using the organization’s approved process. Locate the correct user account in Active Directory Users and Computers (ADUC). Reset the password only after authorization; communicate the temporary password through an approved secure channel and require a change at next logon where appropriate.</p>
+<h2>Verification</h2><p>Verify that the user can sign in and that the account is not locked or disabled. Never include a real password in a ticket, screenshot, or knowledge article.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-001 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-002">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-002</span><span>File Shares &amp; Permissions</span></div>
+<h1>Cannot Access Employees Shared Folder</h1>
+<p class="lead">Shared-folder access</p>
+<h2>Purpose</h2><p>A user reports that the Employees shared folder cannot be opened.</p>
+<h2>Recommended procedure</h2><p>Confirm the user, computer, share path, and exact error. Test name resolution and network reachability to the file server. Review both share permissions and NTFS permissions, then inspect the user’s effective access through group membership and inheritance. Apply only the minimum approved permission change.</p>
+<h2>Verification</h2><p>Retest using the affected user account. Confirm authorized access works and that unrelated folders remain restricted. Do not grant broad access such as Everyone: Full Control as a workaround.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-002 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-003">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-003</span><span>Onboarding &amp; User Provisioning</span></div>
+<h1>New Employee Entry Request</h1>
+<p class="lead">New employee onboarding</p>
+<h2>Purpose</h2><p>A request is raised to create a new employee account.</p>
+<h2>Recommended procedure</h2><p>Validate the approved request and required employee details. Select the correct OU, create the account using the organization’s naming convention, assign only role-appropriate groups, and record the account details in the approved register. Coordinate initial credentials securely.</p>
+<h2>Verification</h2><p>Verify the account appears in the intended OU, group memberships are correct, and the user can authenticate as expected. Record completion against the request.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-003 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-004">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-004</span><span>Security &amp; Access Control</span></div>
+<h1>Unauthorized Shared Folder Access</h1>
+<p class="lead">Unauthorized access</p>
+<h2>Purpose</h2><p>A user may have access to a folder that is outside their job responsibilities.</p>
+<h2>Recommended procedure</h2><p>Identify the exact folder and user. Review share permissions, NTFS permissions, inherited entries, and security-group membership. Confirm the intended access model with the data owner before changing permissions.</p>
+<h2>Verification</h2><p>Test as the affected user and, where possible, an authorized user. Confirm the unauthorized path is denied while legitimate access remains functional. Preserve evidence of the before-and-after permission review.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-004 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-005">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-005</span><span>File Shares &amp; Permissions</span></div>
+<h1>Unable to Access CompanyShare Network Location</h1>
+<p class="lead">Network share connectivity</p>
+<h2>Purpose</h2><p>A workstation cannot reach the CompanyShare network location.</p>
+<h2>Recommended procedure</h2><p>Confirm the UNC path, for example \\DC01\CompanyShare, and verify the client has the expected IP configuration and DNS server. Test server name resolution and connectivity. Check that the share exists and that the Server service and firewall configuration permit SMB access.</p>
+<h2>Verification</h2><p>Open the UNC path from the client using the affected account. Distinguish a network/path problem from an authorization problem; do not change permissions unless evidence points to an access-control issue.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-005 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-006">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-006</span><span>Delegation &amp; Manager Access</span></div>
+<h1>Manager Access</h1>
+<p class="lead">Manager permissions</p>
+<h2>Purpose</h2><p>A manager access request requires the intended manager relationship or access to management resources.</p>
+<h2>Recommended procedure</h2><p>Clarify whether the request concerns the AD Manager attribute, access to a management folder, or delegated administrative rights. These are different controls. Confirm approval, identify the correct user object, and apply only the requested change.</p>
+<h2>Verification</h2><p>Verify the manager attribute or resource access independently. Do not assume setting the Manager attribute grants folder permissions or administrative privileges.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-006 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-007">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-007</span><span>Delegation &amp; Manager Access</span></div>
+<h1>Manager Folder Access Request</h1>
+<p class="lead">Management folder access</p>
+<h2>Purpose</h2><p>A manager requests access to a management folder.</p>
+<h2>Recommended procedure</h2><p>Confirm the manager’s identity, business justification, folder owner approval, and required access level. Prefer assigning access through a dedicated security group rather than directly to an individual. Review share and NTFS permissions before making changes.</p>
+<h2>Verification</h2><p>Test with the manager’s account and confirm other employees do not gain unintended access. Document the group and permission level granted.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-007 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-008">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-008</span><span>Account &amp; Identity Management</span></div>
+<h1>Requesting Temporary Account Lockdown</h1>
+<p class="lead">Temporary account restriction</p>
+<h2>Purpose</h2><p>A request is made to temporarily restrict an account.</p>
+<h2>Recommended procedure</h2><p>Confirm the scope, reason, authorization, and duration. Determine whether disabling the account, restricting sign-in, or another approved control is appropriate. Record who authorized the action and the planned restoration point.</p>
+<h2>Verification</h2><p>Verify the intended restriction is active. Record the re-enable condition and ensure the account is restored only after authorization.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-008 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-009">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-009</span><span>Onboarding &amp; User Provisioning</span></div>
+<h1>Configuring New Team and Users</h1>
+<p class="lead">Team and user setup</p>
+<h2>Purpose</h2><p>A new team structure and associated user accounts need to be configured.</p>
+<h2>Recommended procedure</h2><p>Confirm the team name, OU placement, users, naming conventions, and access requirements. Create or verify the OU structure, create accounts, and use role-based security groups for shared access. Avoid relying on individual permissions where group-based access is appropriate.</p>
+<h2>Verification</h2><p>Check each account’s OU and group membership. Test access with representative users and confirm separation between teams.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-009 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-010">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-010</span><span>Group Policy &amp; Security</span></div>
+<h1>Introducing Changed Account Lockout Policy</h1>
+<p class="lead">Account lockout policy</p>
+<h2>Purpose</h2><p>The domain account lockout policy is being changed or introduced.</p>
+<h2>Recommended procedure</h2><p>Document the approved threshold, lockout duration, and reset-counter interval. Identify where the policy is configured and its scope. In a domain environment, verify the effective domain account policy rather than assuming a workstation-local setting controls domain accounts.</p>
+<h2>Verification</h2><p>Use policy-result or domain-policy inspection tools to confirm the effective settings. Test cautiously with a lab account; avoid locking out administrator or production accounts.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-010 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-011">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-011</span><span>PowerShell &amp; Directory Administration</span></div>
+<h1>Assigning Employee ID</h1>
+<p class="lead">Employee ID assignment</p>
+<h2>Purpose</h2><p>Employee identifiers are being assigned to directory users.</p>
+<h2>Recommended procedure</h2><p>Confirm the required format (for example EMP001), uniqueness rules, and source of truth. Check existing employeeID values before assigning a new value. Record the assignment and avoid reusing identifiers from former employees unless policy explicitly permits it.</p>
+<h2>Verification</h2><p>Query the directory to confirm the intended account has the expected employeeID and that no duplicate value was introduced.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-011 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-012">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-012</span><span>Account &amp; Identity Management</span></div>
+<h1>Enabling Disabled Account</h1>
+<p class="lead">Re-enable user account</p>
+<h2>Purpose</h2><p>An authorized request is made to re-enable a disabled account.</p>
+<h2>Recommended procedure</h2><p>Confirm the account owner, reason for the previous disablement, approval to restore access, and whether the user is still employed or entitled to access. Locate the exact AD account and enable it only after validation.</p>
+<h2>Verification</h2><p>Verify the account is enabled and confirm the user can authenticate. Check group membership and access remain appropriate; enabling an account should not automatically restore unnecessary privileges.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-012 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-013">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-013</span><span>Security &amp; Authentication</span></div>
+<h1>Unidentified Login Attempts</h1>
+<p class="lead">Unrecognized authentication activity</p>
+<h2>Purpose</h2><p>Unrecognized or unexpected login attempts have been observed.</p>
+<h2>Recommended procedure</h2><p>Record the affected account, time window, source workstation if available, and relevant event details. Review available Windows security logs and domain-controller authentication events. Distinguish failed attempts from successful logons and escalate suspicious activity according to the incident process.</p>
+<h2>Verification</h2><p>Confirm whether the activity is understood and whether containment or credential changes are required. Preserve logs and avoid asserting compromise without supporting evidence.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-013 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-014">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-014</span><span>Account &amp; Identity Management</span></div>
+<h1>Consecutive Failed Authentication Attempts</h1>
+<p class="lead">Repeated failed sign-ins</p>
+<h2>Purpose</h2><p>Repeated authentication failures may trigger account lockout or indicate stale credentials.</p>
+<h2>Recommended procedure</h2><p>Identify the account and time pattern. Check whether the user is entering an incorrect password or whether saved credentials, mapped drives, services, scheduled tasks, or other devices are retrying old credentials. Review relevant security events where available.</p>
+<h2>Verification</h2><p>After correcting the source, verify successful sign-in and monitor for repeated failures. Unlocking the account alone may not resolve the underlying cause.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-014 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-015">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-015</span><span>File Shares &amp; Permissions</span></div>
+<h1>Unable to Access the Marketing Folder</h1>
+<p class="lead">Department folder access</p>
+<h2>Purpose</h2><p>A Marketing user cannot access the Marketing shared folder.</p>
+<h2>Recommended procedure</h2><p>Confirm the intended Marketing access group and the folder’s share and NTFS permissions. Check whether the user is a member of the correct security group and whether group membership has refreshed in the current logon session.</p>
+<h2>Verification</h2><p>Sign out and back in if group-token refresh is required, then retest. Confirm access is limited to the intended department resources.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-015 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-016">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-016</span><span>Backup &amp; Recovery</span></div>
+<h1>Backup Operator Unable to Perform File Backup</h1>
+<p class="lead">Backup operation failure</p>
+<h2>Purpose</h2><p>A user assigned backup-related responsibilities cannot perform the expected file backup operation.</p>
+<h2>Recommended procedure</h2><p>Clarify the backup task, target, source data, and exact error. Verify the account’s group membership and the backup tool’s required privileges. The Backup Operators group does not automatically configure a backup job, destination, schedule, or credentials for every backup application.</p>
+<h2>Verification</h2><p>Run a controlled test backup to an approved destination and verify the resulting backup. Document the tool, scope, job configuration, and restore-test evidence.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-016 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-017">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-017</span><span>Onboarding &amp; User Provisioning</span></div>
+<h1>Offboarding Employee Noah Wilson</h1>
+<p class="lead">Employee offboarding</p>
+<h2>Purpose</h2><p>An employee in Sales is leaving and their directory access must be removed.</p>
+<h2>Recommended procedure</h2><p>Confirm the approved departure date and scope with the authorized requester. Disable the account at the correct time, revoke or remove access according to policy, preserve data as instructed, and document ownership/transfer of business files. Follow retention requirements before deleting anything.</p>
+<h2>Verification</h2><p>Verify the account is disabled and access is no longer available. Record completion and any outstanding mailbox, file, or equipment actions.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-017 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-018">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-018</span><span>Backup &amp; Recovery</span></div>
+<h1>Dedicated Folder for Backup Operator Access</h1>
+<p class="lead">Backup operator working folder</p>
+<h2>Purpose</h2><p>A dedicated folder is requested for backup-related work.</p>
+<h2>Recommended procedure</h2><p>Confirm the folder’s purpose, data classification, authorized users, retention, and backup destination. Create a dedicated security group if appropriate and assign least-privilege share and NTFS permissions. Separate ordinary user data from backup storage where practical.</p>
+<h2>Verification</h2><p>Test access with the intended operator and a non-authorized account. Confirm backup files can be written and read by the intended process and that recovery can be performed.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-018 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-019">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-019</span><span>Software &amp; Workstation Support</span></div>
+<h1>Software Installation for Marketing Team</h1>
+<p class="lead">Application deployment</p>
+<h2>Purpose</h2><p>A software application is requested for Marketing users.</p>
+<h2>Recommended procedure</h2><p>Confirm the software is approved, licensed, compatible, and obtained from a trusted source. Determine whether it should be installed per-machine or per-user. For multiple workstations, consider centralized deployment or endpoint-management tooling rather than manually installing on one shared computer.</p>
+<h2>Verification</h2><p>Verify the application launches for the intended users and does not require unnecessary administrative privileges. Record version, installer source, target devices, and test result.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-019 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-020">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-020</span><span>PowerShell &amp; Directory Administration</span></div>
+<h1>Assign a Unique Employee ID to Jamie Taylor</h1>
+<p class="lead">Unique employee ID allocation</p>
+<h2>Purpose</h2><p>A unique employee identifier is requested for Jamie Taylor.</p>
+<h2>Recommended procedure</h2><p>Find the exact user object using a reliable identifier such as sAMAccountName or distinguished name rather than assuming the display name is unique. Query existing employeeID values, select an unused ID following the approved format, and update the correct object.</p>
+<h2>Verification</h2><p>Read the employeeID back from the same user object and run a duplicate check. Record the assigned ID in the approved register without exposing unnecessary personal information.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-020 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-021">
+<button class="back" onclick="showHome()">← Back to contents</button>
+<div class="meta"><span>HD-021</span><span>PowerShell &amp; Directory Administration</span></div>
+<h1>Develop PowerShell Scripts for Active Directory</h1>
+<p class="lead">Directory automation</p>
+<h2>Purpose</h2><p>PowerShell scripts are developed to support routine Active Directory administration.</p>
+<h2>Recommended procedure</h2><p>Maintain scripts for repeatable tasks such as user creation, account checks, group membership reporting, and employee-ID validation. Use clear prompts, input validation, error handling, least-privilege execution, and safe defaults. Test scripts against lab accounts before wider use.</p>
+<h2>Verification</h2><p>Capture sample output and test cases, including invalid input and missing objects. Keep scripts versioned, document prerequisites, and never embed passwords or secrets.</p>
+
+<h2>Related ticket</h2><p>Refer to the original HD-021 ticket document in the project ticket folder.</p>
+
+</article><article class="article" id="article-HD-022"><button class="back" onclick="showHome()">← Back to contents</button><div class="meta"><span>HD-022</span><span>Backup &amp; Recovery</span></div><h1>Configure File Version History with Shadow Copies</h1><p class="lead">Volume-level previous versions and recovery</p><h2>Purpose</h2><p>Provide authorized users with a practical way to inspect and recover earlier versions of shared files without immediately requiring an administrator-led restore.</p><h2>Overview</h2><p>Windows Server Shadow Copies can provide previous versions of files stored on a supported volume. Users with appropriate access can inspect available versions of shared files through the Previous Versions tab. Shadow Copies are volume-based and do not replace independent backups.</p><h2>How to configure and use Previous Versions</h2><p>On the file server, identify the volume that hosts the shared folder. Open the volume’s Properties, select Shadow Copies, and configure the feature, including an appropriate storage limit and snapshot schedule.</p><p>To inspect an earlier file version, open the shared file or its parent folder in File Explorer, select Properties → Previous Versions, and choose an available timestamp. Use Open or Copy to examine the content before selecting Restore, because restoring may overwrite the current version.</p><h2>How to check</h2><p>Confirm that the selected volume has available snapshots and that the Previous Versions tab lists the expected timestamps. If no version appears, check whether a snapshot existed before the file changed, whether the correct volume is configured, and whether the user can access the share.</p><h2>Operational cautions</h2><p>Shadow Copies are not an independent backup: snapshots on the same volume may be lost if the volume fails, storage pressure can purge old versions, and not every file change is captured. Preserve separate backup and restore procedures.</p><h2>Related ticket</h2><p>Refer to the original HD-022 ticket document in the project ticket folder.</p></article><article class="article" id="article-HD-023"><button class="back" onclick="showHome()">← Back to contents</button><div class="meta"><span>HD-023</span><span>Backup &amp; Recovery</span></div><h1>Automate File Version History Snapshots</h1><p class="lead">Scheduled Shadow Copy snapshots</p><h2>Purpose</h2><p>Reduce reliance on manual snapshots by scheduling recurring Shadow Copy creation for the shared-file volume.</p><h2>Overview</h2><p>Scheduled Shadow Copies create periodic recovery points for files on a selected volume. The appropriate frequency and storage quota depend on how often files change, available disk space, and recovery requirements.</p><h2>How to schedule Shadow Copies</h2><p>On the file server, open the relevant volume’s Properties → Shadow Copies → Settings → Schedule. Review existing entries, choose the required times and recurrence, and confirm that the schedule applies to the correct volume.</p><p>Check that the shadow-storage limit is appropriate and that the server clock and time zone are correct. Avoid creating overlapping or duplicate schedules.</p><h2>How to check</h2><p>After a scheduled time has passed, check whether a new snapshot was created automatically. Inspect a previous version of a non-sensitive file to confirm it can be opened. A manually created snapshot does not verify that scheduling works.</p><h2>Troubleshooting</h2><p>If no scheduled snapshot appears, review the configured schedule and selected volume, server time, free space and storage limit, and relevant Windows event logs. Check that Volume Shadow Copy Service dependencies are functioning. Avoid reducing the quota without assessing whether older snapshots may be deleted.</p><h2>Related ticket</h2><p>Refer to the original HD-023 ticket document in the project ticket folder.</p></article><article class="article" id="article-HD-024"><button class="back" onclick="showHome()">← Back to contents</button><div class="meta"><span>HD-024</span><span>Group Policy &amp; Security</span></div><h1>Centralized IT Announcement System</h1><p class="lead">JSON-driven logon announcements</p><h2>Overview</h2><p>A centralized IT announcement system can display non-confidential notices to domain users when they sign in. In this approach, a shared JSON file holds the notice, a PowerShell script displays it, and a Group Policy–deployed scheduled task starts the script after logon.</p><h2>Components and access</h2><p>The shared folder contains a JSON announcement file and the PowerShell display script. Domain users need read access to the files, while modification rights should be restricted to authorized IT administrators. Both share permissions and NTFS permissions affect access.</p><p>Each notice should have a unique AnnouncementID. A per-user record of previously displayed IDs can prevent the same notice from appearing repeatedly.</p><h2>How announcements are managed</h2><p>An authorized administrator updates the announcement title, message, and unique ID in the JSON file. The JSON field names must match those expected by the display script. A new ID allows the next notice to be shown even when a previous one has already been acknowledged.</p><p>Keep the notice appropriate for all users who can read the shared file, and protect the central script from unauthorized changes.</p><h2>How delivery works</h2><p>A Group Policy Preferences scheduled task can launch the PowerShell script in the interactive user session after logon. A short delay can allow network connectivity to become available before the script accesses the shared files.</p><p>The script reads the current announcement, compares its ID with the user’s local seen-announcement record, and displays the message when the ID is new. This method shows notices at sign-in rather than immediately pushing them to users already signed in.</p><h2>Troubleshooting</h2><p>If the notification does not appear, check whether Group Policy applied, whether the scheduled task exists, and whether it runs in the signed-in user’s interactive context. Confirm that the network share and script are readable and that the local seen-announcement file is writable.</p><p>For a Group Policy Preferences scheduled-task error such as 0x80070005 (Access is denied), inspect the task principal, permissions, and relevant Group Policy event logs. A successfully applied GPO does not by itself confirm that its scheduled task was created.</p><h2>How to check</h2><p>Sign in with a test domain account and allow the scheduled task to run. Confirm that a new notice appears, that the same announcement is not repeatedly displayed to that user, and that a different announcement ID produces a new notification on a later sign-in.</p><p>If several users are targeted, test with more than one account to check that per-user tracking works independently.</p><h2>Important considerations</h2><p>Use the system for non-sensitive notices only. Keep the JSON file and PowerShell script protected against unauthorized edits, and remember that users must be able to reach the shared location for the notification to load.</p><h2>Useful checks</h2><p>On a domain client, gpresult /r can help confirm applied Group Policy. Get-ScheduledTask -TaskName "AKLAB-IT-Announcement" can check whether the task exists. Test-Path "\\DC01\CompanyShare\IT-Announcements\Current-Announcement.json" can check access to the announcement file. Adapt names and paths to the environment.</p><h2>Related ticket</h2><p>Refer to the original HD-024 ticket document in the project ticket folder.</p></article></main>
+<footer>AKLAB Directory Help Desk Lab · Version 1.1 · 24 articles · Updated 3 November 2026 · Guidance is based on ticket titles and should be validated against the original ticket evidence before use.</footer>
+<script>
+function openArticle(id){document.getElementById('home').classList.add('hidden');document.querySelectorAll('.article').forEach(a=>a.classList.remove('active'));document.getElementById('article-'+id).classList.add('active');window.scrollTo(0,0);history.replaceState(null,'','#'+id)}
+function showHome(){document.getElementById('home').classList.remove('hidden');document.querySelectorAll('.article').forEach(a=>a.classList.remove('active'));history.replaceState(null,'',location.pathname);window.scrollTo(0,0)}
+function filterCards(){let q=document.getElementById('search').value.toLowerCase();let n=0;document.querySelectorAll('.card').forEach(c=>{let ok=c.dataset.search.includes(q);c.style.display=ok?'':'none';if(ok)n++});document.getElementById('count').textContent=n+' articles';document.getElementById('empty').style.display=n?'none':'block';document.querySelectorAll('.category').forEach(s=>{s.style.display=[...s.querySelectorAll('.card')].some(c=>c.style.display!=='none')?'':'none'})}
+if(location.hash.startsWith('#HD-')){let id=location.hash.slice(1);if(document.getElementById('article-'+id))openArticle(id)}
+</script></body></html>

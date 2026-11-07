@@ -1,0 +1,115 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261104164855
+Username: AKLAB\Administrator
+RunAs User: AKLAB\Administrator
+Configuration Name: 
+Machine: DC01 (Microsoft Windows NT 10.0.26100.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 7588
+PSVersion: 5.1.26100.7462
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7462
+BuildVersion: 10.0.26100.7462
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Users\Administrator\Desktop\AKLAB_Architecture.txt
+PS C:\WINDOWS\system32> Import-Module ActiveDirectory
+PS C:\WINDOWS\system32> Write-Host "`n===== AKLAB DOMAIN ====="
+
+===== AKLAB DOMAIN =====
+PS C:\WINDOWS\system32> Get-ADDomain | Select-Object DNSRoot, NetBIOSName, DomainMode |
+    Format-Table -AutoSize
+
+DNSRoot     NetBIOSName        DomainMode
+-------     -----------        ----------
+aklab.local AKLAB       Windows2025Domain
+
+
+PS C:\WINDOWS\system32> Write-Host "`n===== DOMAIN CONTROLLERS ====="
+
+===== DOMAIN CONTROLLERS =====
+PS C:\WINDOWS\system32> Get-ADDomainController -Filter * |
+    Select-Object Name, IPv4Address, Site |
+    Format-Table -AutoSize
+
+Name IPv4Address   Site
+---- -----------   ----
+DC01 192.168.50.10 Default-First-Site-Name
+
+
+PS C:\WINDOWS\system32> Write-Host "`n===== DOMAIN COMPUTERS ====="
+
+===== DOMAIN COMPUTERS =====
+PS C:\WINDOWS\system32> Get-ADComputer -Filter * -Properties OperatingSystem |
+    Select-Object Name, OperatingSystem, Enabled |
+    Format-Table -AutoSize
+
+Name     OperatingSystem                         Enabled
+----     ---------------                         -------
+DC01     Windows Server 2025 Standard Evaluation    True
+CLIENT01 Windows 11 Pro                             True
+
+
+PS C:\WINDOWS\system32> Write-Host "`n===== ORGANIZATIONAL UNITS ====="
+
+===== ORGANIZATIONAL UNITS =====
+PS C:\WINDOWS\system32> Get-ADOrganizationalUnit -Filter * |
+    Sort-Object DistinguishedName |
+    Select-Object Name, DistinguishedName |
+    Format-Table -Wrap
+
+Name                   DistinguishedName
+----                   -----------------
+Domain Controllers     OU=Domain Controllers,DC=aklab,DC=local
+Employees              OU=Employees,DC=aklab,DC=local
+Finance and Accounting OU=Finance and Accounting,DC=aklab,DC=local
+HelpDesk               OU=HelpDesk,DC=aklab,DC=local
+HR                     OU=HR,DC=aklab,DC=local
+Legal Team             OU=Legal Team,DC=aklab,DC=local
+Managers               OU=Managers,DC=aklab,DC=local
+Marketing              OU=Marketing,DC=aklab,DC=local
+Sales                  OU=Sales,DC=aklab,DC=local
+Workstations           OU=Workstations,DC=aklab,DC=local
+
+
+PS C:\WINDOWS\system32> Write-Host "`n===== DC01 NETWORK ====="
+
+===== DC01 NETWORK =====
+PS C:\WINDOWS\system32> Get-NetIPConfiguration |
+    Format-List InterfaceAlias, IPv4Address, IPv4DefaultGateway, DNSServer
+
+
+InterfaceAlias     : Ethernet
+IPv4Address        : {192.168.50.10}
+IPv4DefaultGateway :
+DNSServer          : {MSFT_DNSClientServerAddress (Name = "13", CreationClassName = "",
+                     SystemCreationClassName = "", SystemName = "23"), MSFT_DNSClientServerAddress
+                     (Name = "13", CreationClassName = "", SystemCreationClassName = "", SystemName =
+                     "2")}
+
+
+
+PS C:\WINDOWS\system32> Write-Host "`n===== DC01 SHARED FOLDERS ====="
+
+===== DC01 SHARED FOLDERS =====
+PS C:\WINDOWS\system32> Get-SmbShare |
+    Where-Object { -not $_.Special } |
+    Select-Object Name, Path |
+    Format-Table -AutoSize
+
+Name         Path
+----         ----
+CompanyShare C:\CompanyShare
+NETLOGON     C:\WINDOWS\SYSVOL\sysvol\aklab.local\SCRIPTS
+SYSVOL       C:\WINDOWS\SYSVOL\sysvol
+
+
+PS C:\WINDOWS\system32> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20261104164920
+**********************
